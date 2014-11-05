@@ -20,12 +20,39 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} ">
+	<label for="email">
+		<g:message code="user.email.label" default="Email" />
+		
+	</label>
+	<g:textField name="email" value="${userInstance?.email}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
 		
 	</label>
 	<g:checkBox name="enabled" value="${userInstance?.enabled}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'firstname', 'error')} ">
+	<label for="firstname">
+		<g:message code="user.firstname.label" default="Firstname" />
+		
+	</label>
+	<g:textField name="firstname" value="${userInstance?.firstname}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'lastname', 'error')} ">
+	<label for="lastname">
+		<g:message code="user.lastname.label" default="Lastname" />
+		
+	</label>
+	<g:textField name="lastname" value="${userInstance?.lastname}" />
 
 </div>
 

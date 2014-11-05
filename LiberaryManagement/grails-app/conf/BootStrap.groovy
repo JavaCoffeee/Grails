@@ -14,6 +14,12 @@ import com.readersadda.www.UserRole;
 		
 		UserRole.create(admin,adminRole)
 		UserRole.create(zaptech,userRole)
+		
+		['ROLE_FACEBOOK', 'ROLE_USER', 'ROLE_ADMIN'].each { roleStr ->
+			if ( !Role.findByAuthority(roleStr) ) {
+				new Role(authority: roleStr).save(flush: true)
+			}
+		}
     }
     def destroy = {
     }

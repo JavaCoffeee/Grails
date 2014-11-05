@@ -1,34 +1,29 @@
 package com.readersadda.www
 
 
-//comment from pradeep 
-import static org.springframework.http.HttpStatus.*
 
-import grails.plugin.springsecurity.annotation.Secured
+import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-	
-	@Secured(['ROLE_ADMIN'])
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userInstanceCount: User.count()]
     }
 
-	@Secured(['ROLE_ADMIN'])
     def show(User userInstance) {
         respond userInstance
     }
 
-	@Secured(['ROLE_ADMIN'])
     def create() {
         respond new User(params)
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Transactional
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -51,12 +46,11 @@ class UserController {
         }
     }
 
-	@Secured(['ROLE_ADMIN'])
     def edit(User userInstance) {
         respond userInstance
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Transactional
     def update(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -79,7 +73,7 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Transactional
     def delete(User userInstance) {
 
         if (userInstance == null) {
@@ -107,31 +101,4 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
-	
-	def signUp(){
-		respond new User(params)
-	}
-	
-	def signUpSave(User userInstance){
-		if (userInstance == null) {
-			notFound()
-			return
-		}
-
-		if (userInstance.hasErrors()) {
-			respond userInstance.errors, view:'create'
-			return
-		}
-
-		userInstance.save flush:true
-
-		//Assign Role user to new created user
-		def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(flush: true)
-		if(!userInstance.authorities.contains(userRole)){
-			UserRole.create userInstance, userRole
-		}
-
-		respond userInstance, view:'signUpSuccess'
-	}
-	
 }

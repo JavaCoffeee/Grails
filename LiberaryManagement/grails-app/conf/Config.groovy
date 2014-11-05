@@ -131,8 +131,23 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-	'/user/**':					['permitAll']
+	'/user/**':					['permitAll'],
+	'/author/**':					['permitAll'],
+	'/book/**':					['permitAll'],
+	'/publisher/**':					['permitAll']
 ]
 
 grails.plugins.twitterbootstrap.fixtaglib = true
 grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
+
+//for facebook integration
+grails.plugin.springsecurity.facebook.domain.classname='com.readersadda.www.FacebookUser'
+grails.plugin.springsecurity.facebook.appId='1471960029705323'
+grails.plugin.springsecurity.facebook.secret='cf5a0b146611ae53bcd63f16ae05bd6e'
+
+environments {
+  prod {
+	grails.plugin.springsecurity.facebook.appId='1471960029705323'
+	grails.plugin.springsecurity.facebook.secret='cf5a0b146611ae53bcd63f16ae05bd6e'
+  }
+}

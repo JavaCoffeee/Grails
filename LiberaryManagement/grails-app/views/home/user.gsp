@@ -2,7 +2,21 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<title>Welcome Admin</title>
+<title>Welcome User</title>
+<style>
+body {
+	counter-reset: Serial; /* Set the Serial counter to 0 */
+}
+
+table {
+	border-collapse: separate;
+}
+
+tr td:first-child:before {
+	counter-increment: Serial; /* Increment the Serial counter */
+	content: counter(Serial); /* Display the counter */
+}
+</style>
 </head>
 <body>
 	<ol class="breadcrumb">
@@ -16,9 +30,41 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-9" id="subContent">
-			<center>
-				<b>Welcome to Reader's Adda</b>
-			</center>
+			<table>
+				<tr>
+					<th>Sr.No</th>
+					<th>ISBN</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Price</th>
+					<th>Publisher</th>
+				</tr>
+
+				<g:each in="${bookList}" var="book">
+
+					<tr>
+						<td></td><%--
+						leave this blank for serial number
+						--%><td>
+							${book?.isbn }
+						</td>
+						<td>
+							${book?.title}
+						</td>
+						<td>
+							${book?.author?.name }
+						</td>
+						<td>
+							${book?.price}
+						</td>
+						<td>
+							${book?.publisher?.name }
+
+						</td>
+					</tr>
+				</g:each>
+			</table>
+
 		</div>
 	</div>
 </body>

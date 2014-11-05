@@ -41,11 +41,38 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.enabled}">
 				<li class="fieldcontain">
 					<span id="enabled-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
 					
 						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.firstname}">
+				<li class="fieldcontain">
+					<span id="firstname-label" class="property-label"><g:message code="user.firstname.label" default="Firstname" /></span>
+					
+						<span class="property-value" aria-labelledby="firstname-label"><g:fieldValue bean="${userInstance}" field="firstname"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.lastname}">
+				<li class="fieldcontain">
+					<span id="lastname-label" class="property-label"><g:message code="user.lastname.label" default="Lastname" /></span>
+					
+						<span class="property-value" aria-labelledby="lastname-label"><g:fieldValue bean="${userInstance}" field="lastname"/></span>
 					
 				</li>
 				</g:if>

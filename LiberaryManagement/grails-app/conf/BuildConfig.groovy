@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
         test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
 		//spring core plugin dependency
 		compile "net.sf.ehcache:ehcache-core:2.4.8"
+		compile 'org.springframework.social:spring-social-facebook:1.0.1.RELEASE'
     }
 
     plugins {
@@ -65,7 +66,8 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.6"
 		compile ":spring-security-core:2.0-RC4"
 		compile ':mongodb:3.0.2'
-
+		//spring security facebook authentication
+		compile "org.grails.plugins:spring-security-facebook:0.15.4-CORE2"
         // plugins needed at runtime but not for compilation
         //runtime ":hibernate4:4.3.5.5" // or ":hibernate:3.6.10.17"
         runtime ":database-migration:1.4.0"
