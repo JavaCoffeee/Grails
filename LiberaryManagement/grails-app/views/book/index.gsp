@@ -22,18 +22,22 @@
 			</g:if>
 			<table>
 			<thead>
-					<tr>			
-						<g:sortableColumn property="title" title="${message(code: 'book.title.label', default: 'Title')}" />
+					<tr>
 						
-						<th><g:message code="book.author.label" default="Author" /></th>						
-					
 						<g:sortableColumn property="isbn" title="${message(code: 'book.isbn.label', default: 'Isbn')}" />
-					
-						<g:sortableColumn property="price" title="${message(code: 'book.price.label', default: 'Price')}" />
-					
-						<th><g:message code="book.publisher.label" default="Publisher" /></th>
+						
+						<g:sortableColumn property="title" title="${message(code:'book.title.lable',default: 'Title') }"/>
 						
 						<g:sortableColumn property="about" title="${message(code: 'book.about.label', default: 'About')}" />
+						
+						<g:sortableColumn property="img" title="${message(code: 'book.img.label', default: 'Image')}" />
+						
+						<g:sortableColumn property="price" title="${message(code: 'book.price.label', default: 'Price')}" />
+											
+						<th><g:message code="book.author.label" default="Author" /></th>			
+						
+					
+						<th><g:message code="book.publisher.label" default="Publisher" /></th>
 					
 					</tr>
 				</thead>
@@ -41,17 +45,19 @@
 				<g:each in="${bookInstanceList}" status="i" var="bookInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "title")}</g:link></td>
-					
-						<td>${fieldValue(bean: bookInstance, field: "author.name")}</td>
-					
-						<td>${fieldValue(bean: bookInstance, field: "isbn")}</td>
-					
+						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "isbn")}</g:link></td>
+						
+						<td>${fieldValue(bean: bookInstance , field: "title") }</td>
+						
+						<td>${fieldValue(bean: bookInstance, field: "about")}</td>
+						
+						<td><img src="${createLink(controller : 'book' , action:'showImg' , id:"${bookInstance.id}")}"></img></td>
+						
 						<td>${fieldValue(bean: bookInstance, field: "price")}</td>
 					
+						<td>${fieldValue(bean: bookInstance, field: "author.name")}</td>					
+						
 						<td>${fieldValue(bean: bookInstance, field: "publisher.name")}</td>
-					
-						<td>${fieldValue(bean: bookInstance, field: "about")}</td>
 					
 					</tr>
 				</g:each>

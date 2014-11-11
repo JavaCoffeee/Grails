@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'img', 'error')} ">
+	<label for="img">
+		<g:message code="book.img.label" default="Img" />
+		
+	</label>
+	<input type="file" id="img" name="img" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'isbn', 'error')} ">
 	<label for="isbn">
 		<g:message code="book.isbn.label" default="Isbn" />
@@ -40,26 +49,15 @@
 
 <div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'publisher', 'error')} ">
 	<label for="publisher">
-		<g:message code="book.publisher.label" default="Publisher" />
-		
+		<g:message code="book.publisher.label" default="Publisher" />		
 	</label>
-	<%--<g:select id="publisher" name="publisher.id" from="${com.readersadda.www.Publisher.list()}" optionKey="id" required="" value="${bookInstance?.publisher?.id}" class="many-to-one"/>--%>
-	<g:select id="publisher" name="publisher.id" from="${com.readersadda.www.Publisher.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.publisher?.id}" class="many-to-one"/>
-	</div>
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'title', 'error')} ">
-	<label for="title">
-		<g:message code="book.title.label" default="Title" />
-		
-	</label>
-	<g:textField name="title" value="${bookInstance?.title}" />
+	<g:select id="publisher" name="publisher.id" from="${com.readersadda.www.Publisher.list()}" optionKey="id" required="" value="${bookInstance?.publisher?.id}" class="many-to-one" optionValue="name"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'title', 'error')} ">
 	<label for="title">
 		<g:message code="book.title.label" default="Title" />
-		
 	</label>
 	<g:textField name="title" value="${bookInstance?.title}" />
 

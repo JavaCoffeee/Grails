@@ -41,6 +41,14 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${bookInstance?.img}">
+				<li class="fieldcontain">
+					<span id="img-label" class="property-label"><g:message code="book.img.label" default="Img" /></span>
+					<img src="${createLink(controller : 'book' , action:'showImg' , id:"${bookInstance.id}")}"></img>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${bookInstance?.isbn}">
 				<li class="fieldcontain">
 					<span id="isbn-label" class="property-label"><g:message code="book.isbn.label" default="Isbn" /></span>

@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class BookController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -18,8 +18,14 @@ class BookController {
     def show(Book bookInstance) {
         respond bookInstance
     }
-
-    def create() {
+	
+	def showImg(Book bookInstance){
+		response.outputStream << bookInstance.img
+		response.outputStream.flush()
+		respond bookInstance
+	}
+	
+	def create() {
         respond new Book(params)
     }
 
