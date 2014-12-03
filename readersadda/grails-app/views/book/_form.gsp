@@ -1,65 +1,78 @@
-<%@ page import="com.readersadda.www.Book" %>
+<%@ page import="com.readersadda.www.Book"%>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'about', 'error')} ">
-	<label for="about">
-		<g:message code="book.about.label" default="About" />
-		
+<div class="form-group">
+	<label for="title" class="col-sm-3 control-label"> <g:message
+			code="book.title.label" default="Title" />
 	</label>
-	<g:textField name="about" value="${bookInstance?.about}" />
-
+	<div class="col-sm-4">
+		<g:textField name="title" value="${bookInstance?.title}"
+			class="form-control" />
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'author', 'error')} ">
-	<label for="author">
-		<g:message code="book.author.label" default="Author" />
-		
+<div class="form-group">
+	<label for="isbn" class="col-sm-3 control-label"> <g:message
+			code="book.isbn.label" default="Isbn" />
 	</label>
-	<g:select id="author" name="author.id" from="${com.readersadda.www.Author.list()}" optionKey="id" required="" value="${bookInstance?.author?.id}" class="many-to-one" optionValue="name"/>
-
+	<div class="col-sm-4">
+		<g:textField name="isbn" value="${bookInstance?.isbn}"
+			class="form-control" />
+	</div>
 </div>
 
-<div class="fieldcontain">
-	<label for="img">
-		<g:message code="book.img.label" default="Img" />
-		
+<div class="form-group">
+	<label for="price" class="col-sm-3 control-label"> <g:message
+			code="book.price.label" default="Price" />
 	</label>
-	<input type="file" id="img" name="img" />
-
+	<div class="col-sm-4">
+		<g:textField name="price" value="${bookInstance?.price}"
+			class="form-control" />
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'isbn', 'error')} ">
-	<label for="isbn">
-		<g:message code="book.isbn.label" default="Isbn" />
-		
+<div class="form-group">
+	<label for="img" class="col-sm-3 control-label"> <g:message
+			code="book.img.label" default="Img" />
 	</label>
-	<g:textField name="isbn" value="${bookInstance?.isbn}" />
-
+	<div class="col-sm-4">
+		<input type="file" id="img" name="img" class="form-control" />
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'price', 'error')} ">
-	<label for="price">
-		<g:message code="book.price.label" default="Price" />
-		
+<div class="form-group">
+	<label for="author" class="col-sm-3 control-label"> <g:message
+			code="book.author.label" default="Author" />
 	</label>
-	<g:textField name="price" value="${bookInstance?.price}" />
-
+	<div class="col-sm-4">
+		<g:select id="author" name="author.id"
+			from="${com.readersadda.www.Author.list()}" optionKey="id"
+			required="" value="${bookInstance?.author?.id}" class="many-to-one"
+			optionValue="name" class="form-control" />
+	</div>
+	Author is not listed here ? Click on Create Author Button to register author
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'publisher', 'error')} ">
-	<label for="publisher">
-		<g:message code="book.publisher.label" default="Publisher" />		
+<div class="form-group">
+	<label for="publisher" class="col-sm-3 control-label"> <g:message
+			code="book.publisher.label" default="Publisher" />
 	</label>
-	<g:select id="publisher" name="publisher.id" from="${com.readersadda.www.Publisher.list()}" optionKey="id" required="" value="${bookInstance?.publisher?.id}" class="many-to-one" optionValue="name"/>
-
+	<div class="col-sm-4">
+		<g:select id="publisher" name="publisher.id"
+			from="${com.readersadda.www.Publisher.list()}" optionKey="id"
+			required="" value="${bookInstance?.publisher?.id}"
+			class="many-to-one" optionValue="name" class="form-control" />
+	</div>
+	Publisher is not listed here ? Click on Create Publisher Button to register publisher
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'title', 'error')} ">
-	<label for="title">
-		<g:message code="book.title.label" default="Title" />
+<div class="form-group">
+	<label for="about" class="col-sm-3 control-label"> <g:message
+			code="book.about.label" default="About" />
 	</label>
-	<g:textField name="title" value="${bookInstance?.title}" />
+	<div class="col-sm-4">
+		<g:textArea name="about" value="${bookInstance?.about}"
+			class="form-control" style="height:200px"/>
+	</div>
 
 </div>
 

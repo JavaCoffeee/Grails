@@ -3,6 +3,7 @@ package com.readersadda.www
 
 
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -45,6 +46,34 @@ class PublisherController {
             '*' { respond publisherInstance, [status: CREATED] }
         }
     }
+	
+	@Secured(['ROLE_DEALER'])
+	def popup_save(Publisher publisherInstance) {
+		println "inside popup_save"
+		println publisherInstance.publishDate
+		println publisherInstance.name
+		if (publisherInstance == null) {
+			notFound()
+			return
+		}
+
+		if (publisherInstance.hasErrors()) {
+			respond publisherInstance.errors, view:'create'
+			return
+		}
+
+		publisherInstance.save flush:true
+
+		redirect controller:"book",action : "create_temp"
+		
+		/*request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'publisher.label', default: 'Publisher'), publisherInstance.id])
+				redirect publisherInstance
+			}
+			'*' { respond publisherInstance, [status: CREATED] }
+		}*/
+	}
 
     def edit(Publisher publisherInstance) {
         respond publisherInstance

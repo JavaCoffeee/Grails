@@ -1,6 +1,7 @@
 package com.readersadda.www
 
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -15,7 +16,7 @@ class BookController {
 
     def show(Book bookInstance) {
         respond bookInstance
-    }
+    }	
 	
 	def loadImg(Book bookInstance){
 		String path = bookInstance.imgPath
@@ -27,6 +28,10 @@ class BookController {
 	def create() {
         respond new Book(params)
     }
+	
+	def create_temp() {
+		respond new Book(params)
+	}
 
     @Transactional
     def save(Book bookInstance) {
@@ -115,5 +120,13 @@ class BookController {
 	
 	def open(Book bookInstance){
 		render view : "open" , model : [bookInstance : bookInstance]
+	}
+	
+	def testpage(){
+		
+	}
+	
+	def listbook(){
+		
 	}
 }

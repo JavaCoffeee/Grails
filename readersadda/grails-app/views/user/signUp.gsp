@@ -72,6 +72,15 @@
 							value="${userInstance?.confirmPassword}" class="form-control" />
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label for="'confirmPassword'" class="col-sm-3 control-label">User
+						Status </label>
+					<div class="col-sm-4">
+						<g:textField name="userstatus" value="${params.userstatus}" />
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-3">
 						<g:submitButton name="create" class="btn btn-default"
@@ -80,6 +89,7 @@
 				</div>
 			</g:form>
 		</div>
+	
 	</div>
 </body>
 </html>

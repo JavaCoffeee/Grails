@@ -17,4 +17,9 @@ class ScreenController {
 	def adminPage(){
 		render "This is admin page"
 	}
+	
+	@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+	def dealerSuccessfullyRegistered(){
+		[title:"Readersadda"]
+	}
 }

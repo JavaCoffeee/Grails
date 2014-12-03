@@ -15,24 +15,21 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
-	static transients = ['springSecurityService' , 'confirmPassword']
+	static transients = [
+		'springSecurityService' ,
+		'confirmPassword'
+	]
 
 	static constraints = {
-		/*username blank: false, unique: true
-		password blank: false,validator : {password , obj ->
-			def cPassword = obj.confirmPassword
-			password == cPassword ? true : ['invalid.matchingpasswords']
-			
-		}
+		username blank: false, unique: true
+		password blank: false
 		confirmPassword bindable : true
-		firstname blank: false,nullable: false
+		firstname blank: false,nullable: true
 		lastname blank: true,nullable: true
-		email blank: false, nullable: false, unique: true, email: true*/
+		email blank: false, nullable: true, unique: true, email: true
 	}
 
-	static mapping = {
-		password column: '`password`'
-	}
+	static mapping = { password column: '`password`' }
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role }

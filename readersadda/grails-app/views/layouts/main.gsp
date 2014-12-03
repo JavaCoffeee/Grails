@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title><g:layoutTitle default="Grails" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}"
+<link rel="shortcut icon" href="${assetPath(src: 'addalogo.png')}"
 	type="image/x-icon">
 <link rel="apple-touch-icon"
 	href="${assetPath(src: 'apple-touch-icon.png')}">
@@ -25,7 +25,7 @@
 	src="jquery/jquery-1.11.1.js" />
 <r:require modules="bootstrap" />
 <g:layoutHead />
-<r:layoutResources />
+
 </head>
 <body>
 	<!-- page -->
@@ -44,7 +44,6 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav" id="navlinkpadding">
-
 							<sec:ifAllGranted roles="ROLE_ADMIN">
 								<li><a href="#">Manage User</a></li>
 								<li><g:link controller="author" action="index">Add Author</g:link></li>
@@ -53,24 +52,30 @@
 							</sec:ifAllGranted>
 
 							<sec:ifAllGranted roles="ROLE_USER">
-								<li><a href="#" id="toppadding">Test Link</a></li>
+								<li><g:link controller="book" action="testpage">Test Page</g:link></li>
 							</sec:ifAllGranted>
-
-							<sec:ifNotLoggedIn>
-								<li><g:link controller='login' action='auth'>Login</g:link></li>
-							</sec:ifNotLoggedIn>
-							<sec:ifNotLoggedIn>
-								<li><g:link controller='user' action='signUp'>Sign Up</g:link></li>
-							</sec:ifNotLoggedIn>
-							<sec:ifLoggedIn>
-								<li><a href="${createLink(controller: 'logout')}"
-									id="toppadding"> Logout</a></li>
-							</sec:ifLoggedIn>
+							
+							<sec:ifAllGranted roles = "ROLE_DEALER">
+								<%--<li><g:link controller="author" action="index">Add Author</g:link></li>
+								--%><li><g:link controller="book" action="create_temp">Add Book</g:link></li>
+								<li><g:link controller="book" action="listbook">List Books</g:link></li>
+					
+							</sec:ifAllGranted>
+							
 						</ul>
 
-
 						<ul class="nav navbar-nav navbar-right">
-							<a href="#">Welcome ${username}</a>
+							<sec:ifNotLoggedIn>
+								<li><g:link controller='login' action='auth'>Sign in</g:link></li>
+							</sec:ifNotLoggedIn>
+							<sec:ifNotLoggedIn>
+								<li><g:link controller='user' action='signUp'>Create Account</g:link></li>
+							</sec:ifNotLoggedIn>
+							<sec:ifLoggedIn>
+								<li><a href="#" >Welcome : <sec:username/></a></li>
+								<li><a href="${createLink(controller: 'logout')}"
+									>Logout</a></li>
+							</sec:ifLoggedIn>
 						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
@@ -92,7 +97,50 @@
 	</div>
 	<!-- /page -->
 	<!-- footer -->
-	<footer> </footer>
+	<footer>
+		<div id="navFooter" style="padding-top: 50%;padding-bottom: 20%">
+			<table class="navFooterVerticalColumn" cellspacing="0" align="center">
+				<tbody>
+					<tr>
+						<td class="navFooterLinkCol">
+							<div class="navFooterColHead">Get us to know</div>
+							<ul>
+								<li class="nav_first"><a class="nav_a">About Us</a></li>
+								<li><a class="nav_a">Careers</a>
+								<li><a class="nav_a">Press Releases</a></li>
+							</ul>
+						</td>
+						<td class="navFooterColSpacerInner"></td>
+						<td class="navFooterLinkCol">
+							<div class="navFooterColHead">Contact with Us</div>
+							<ul>
+								<li class="nav_first"><a class="nav_a">Facebook</a></li>
+								<li><a class="nav_a">Twitter</a></li>
+							</ul>
+						</td>
+						<td class="navFooterColSpacerInner"></td>
+						<td class="navFooterLinkCol">
+							<div class="navFooterColHead">Make Money with Us</div>
+							<ul>
+								<li class="nav_first"><a class="nav_a" href="${createLink(controller:'dealer',action:'home') }">Sell on adda</a></li>
+								<li><a class="nav_a">Become an affiliate</a></li>
+								<li><a class="nav_a">Fullfillment by adda</a></li>
+							</ul>
+						</td>
+						<td class="navFooterColSpacerInner"></td>
+						<td class="navFooterLinkCol">
+							<div class="navFooterColHead">Let us Help You</div>
+							<ul>
+								<li class="nav_first"><a class="nav_a">Your Account</a></li>
+								<li><a class="nav_a">Delivery Speeds and Charges</a></li>
+								<li><a class="nav_a">Returns Center</a></li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</footer>
 	<!-- /footer -->
 </html>
 

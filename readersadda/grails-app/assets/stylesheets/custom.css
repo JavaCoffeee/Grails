@@ -7,3 +7,146 @@
 	padding-left : 15%;
 	
 }
+<!--for footer-->
+#navFooter {
+    margin: 30px 0 8px;
+    padding: 0 0 7px;
+}
+
+#navFooter table.navFooterVerticalColumn {
+    margin: 0 auto;
+    width: auto;
+}
+
+.navFooterVerticalColumn .navFooterColSpacerInner {
+    padding: 0 15px;
+    width: 10%;
+}
+
+.navFooterLinkCol {
+    color: #333;
+    vertical-align: top;
+}
+
+.navFooterLinkCol ul {
+    margin: 0;
+    padding: 0;
+}
+.navFooterLinkCol ul li {
+    list-style-type: none;
+    margin: 0 0 8px;
+    white-space: nowrap;
+}
+.navFooterLinkCol ul li.nav_a_carat {
+    padding-left: 0;
+    position: relative;
+}
+
+.navFooterLinkCol ul li.nav_a_carat span.nav_a_carat {
+    color: #e47911;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    top: 0;
+}
+.navFooterLinkCol ul li.nav_a_carat a {
+    padding-left: 4px;
+}
+
+.navFooterColHead {
+    color: #e47911;
+    font-family: "arial","sans-serif";
+    font-weight: bold;
+    margin: 0 0 8px;
+    white-space: nowrap;
+}
+#navFooter.navGreyFooter .navFooterColHead {
+    color: #333;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 22px;
+    margin: 0 0 16px;
+}
+
+.navFooterThreeColumn .navFooterColSpacerInner {
+    padding: 0 15px;
+    width: 15%;
+}
+.navFooterVerticalColumn .navFooterColSpacerInner {
+    padding: 0 15px;
+    width: 10%;
+}
+
+#signin-slot {   
+    width: 50%;
+    height : 50%;
+    margin-left: 25%;
+}
+
+#ap_signin_form_table td.ap_login_suggest {
+    padding-bottom: 4px;
+    padding-top: 0;
+}
+
+.ap_col1 {
+    width: 210px;
+}
+.ap_col2 {
+    width: 370px;
+}
+.ap_right {
+    text-align: right;
+}
+.ap_left {
+    text-align: left;
+}
+.ap_bold {
+    font-weight: bold;
+}
+.ap_no_collapse {
+    min-height: 28px;
+}
+
+.ap_row {
+    clear: both;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.ap_table {
+    width: 566px;
+}
+
+.ap_table > .ap_row > span {
+    float: left;
+    padding: 0 4px;
+    vertical-align: middle;
+}
+
+.ap_section_title {
+    height: auto;
+    margin-bottom: 2px;
+}
+
+.ap_pagelet {
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+.ap_pagelet input {
+    vertical-align: text-bottom;
+}
+.ap_pagelet_title {
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+#applycolor{
+	font-size: 120%;
+    font-weight: bold;
+    color: #e47911;
+}

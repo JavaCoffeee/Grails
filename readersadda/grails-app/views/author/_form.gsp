@@ -4,17 +4,14 @@
 
 <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'about', 'error')} ">
 	<label for="about">
-		<g:message code="author.about.label" default="About" />
-		
+		<g:message code="author.about.label" default="About" />		
 	</label>
 	<g:textField name="about" value="${authorInstance?.about}" />
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'address', 'error')} ">
 	<label for="address">
-		<g:message code="author.address.label" default="Address" />
-		
+		<g:message code="author.address.label" default="Address" />		
 	</label>
 	<g:textField name="address" value="${authorInstance?.address}" />
 
@@ -34,11 +31,10 @@
 <g:link controller="book" action="create" params="['author.id': authorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'book.label', default: 'Book')])}</g:link>
 </li>
 </ul>
-
-
 </div>
 
---%><div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'contact', 'error')} ">
+--%>
+<div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'contact', 'error')} ">
 	<label for="contact">
 		<g:message code="author.contact.label" default="Contact" />
 		

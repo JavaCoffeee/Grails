@@ -132,9 +132,10 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 	'/user/**':					['permitAll'],
-	'/author/**':					['permitAll'],
-	'/book/**':					['permitAll'],
-	'/publisher/**':					['permitAll']
+	'/author/**':					['ROLE_ADMIN','ROLE_USER','ROLE_DEALER'],
+	'/book/**':					['ROLE_ADMIN','ROLE_USER','ROLE_ANONYMOUS','ROLE_DEALER'],
+	'/dealer/**':					['ROLE_ADMIN','ROLE_USER','ROLE_ANONYMOUS','ROLE_DEALER'],
+	'/publisher/**':					['ROLE_ADMIN','ROLE_USER','ROLE_DEALER']
 ]
 
 grails.plugins.twitterbootstrap.fixtaglib = true
@@ -151,5 +152,3 @@ environments {
 	grails.plugin.springsecurity.facebook.secret='cf5a0b146611ae53bcd63f16ae05bd6e'
   }
 }
-
-grails.databinding.convertEmptyStringsToNull = false

@@ -3,6 +3,8 @@ package com.readersadda.www
 
 
 import static org.springframework.http.HttpStatus.*
+
+import grails.plugin.springsecurity.annotation.Secured;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -45,7 +47,32 @@ class AuthorController {
             '*' { respond authorInstance, [status: CREATED] }
         }
     }
+	
+	@Secured(['ROLE_DEALER'])
+	def popup_save(Author authorInstance) {
+		if (authorInstance == null) {
+			notFound()
+			return
+		}
 
+		if (authorInstance.hasErrors()) {
+			respond authorInstance.errors, view:'create'
+			return
+		}
+
+		authorInstance.save flush:true
+
+		redirect controller:"book",action : "create_temp"
+		
+		/*request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'author.label', default: 'Author'), authorInstance.id])
+				redirect authorInstance
+			}
+			'*' { respond authorInstance, [status: CREATED] }
+		}*/
+	}
+	
     def edit(Author authorInstance) {
         respond authorInstance
     }
