@@ -1,7 +1,5 @@
 package com.readersadda.www
 
-
-
 import static org.springframework.http.HttpStatus.*
 
 import grails.plugin.springsecurity.annotation.Secured;
@@ -128,4 +126,8 @@ class AuthorController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	public void tmp(){
+		render "inside temp"
+	}
 }

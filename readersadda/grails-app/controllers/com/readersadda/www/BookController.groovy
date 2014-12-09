@@ -8,6 +8,8 @@ import grails.transaction.Transactional
 class BookController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
+	
+	def springSecurityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -50,6 +52,10 @@ class BookController {
 		/*bookInstance.img = thumbnail.getBytes()
 		bookInstance.*/
 		bookInstance.imgPath = thumbnail.getPath()
+		
+		def principal = springSecurityService.principal
+		
+		bookInstance.userId = principal.id
 
         bookInstance.save flush:true
 
@@ -127,6 +133,17 @@ class BookController {
 	}
 	
 	def listbook(){
+		def principal = springSecurityService.principal
+		def bookList = []
+		def books=[]
+		Long userId = principal.id
 		
+		bookList = Book.list()
+		for(Book book : bookList){
+			if(book.userId==userId){
+				books.add(book)
+			}
+		}
+		[bookInstanceList : books,bookInstanceCount : books.size]
 	}
 }

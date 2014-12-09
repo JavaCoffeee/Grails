@@ -11,11 +11,21 @@
 </div>
 
 <div class="form-group">
-	<label for="isbn" class="col-sm-3 control-label"> <g:message
-			code="book.isbn.label" default="Isbn" />
+	<label for="isbn10" class="col-sm-3 control-label"> <g:message
+			code="book.isbn10.label" default="Isbn-10" />
 	</label>
 	<div class="col-sm-4">
-		<g:textField name="isbn" value="${bookInstance?.isbn}"
+		<g:textField name="isbn10" value="${bookInstance?.isbn10}"
+			class="form-control" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="isbn13" class="col-sm-3 control-label"> <g:message
+			code="book.isbn13.label" default="Isbn-13" />
+	</label>
+	<div class="col-sm-4">
+		<g:textField name="isbn13" value="${bookInstance?.isbn13}"
 			class="form-control" />
 	</div>
 </div>
@@ -37,6 +47,19 @@
 	<div class="col-sm-4">
 		<input type="file" id="img" name="img" class="form-control" />
 	</div>
+</div>
+
+<div class="form-group">
+	<label for="category" class="col-sm-3 control-label"> <g:message
+			code="book.category.label" default="Category" />
+	</label>
+	<div class="col-sm-4">
+		<g:select id="category" name="category.id"
+			from="${com.readersadda.www.Category.list()}" optionKey="id"
+			required="" value="${bookInstance?.category?.id}" class="many-to-one"
+			optionValue="category" class="form-control" />
+	</div>
+	Category is not listed here ? Click on Create Category Button to register Category
 </div>
 
 <div class="form-group">
@@ -63,6 +86,16 @@
 			class="many-to-one" optionValue="name" class="form-control" />
 	</div>
 	Publisher is not listed here ? Click on Create Publisher Button to register publisher
+</div>
+
+<div class="form-group">
+	<label for="totalPage" class="col-sm-3 control-label"> <g:message
+			code="book.totalPage.label" default="Total Page" />
+	</label>
+	<div class="col-sm-4">
+		<g:textField name="totalPage" value="${bookInstance?.totalPage}"
+			class="form-control" />
+	</div>
 </div>
 
 <div class="form-group">

@@ -122,13 +122,15 @@ div#users-contain table td, div#users-contain table th {
 
 		function addPublisher() {
 			var valid = true;
-
-			/*$("#users tbody").append(
-					"<tr>" + "<td>" + name.val() + "</td>" + "<td>"
-							+ address.val() + "</td>" + "<td>"
-							+ contact.val() + "</td>" + "</tr>");
-			*/
 			$('#publisherform').submit();
+			publisherDialog.dialog("close");
+			return valid;
+		}
+
+		function addPublisher1() {
+			var valid = true;
+			<g:remoteFunction controller="author" action="tmp"/>
+			//$('#publisherform').submit();
 			publisherDialog.dialog("close");
 			return valid;
 		}
@@ -158,7 +160,7 @@ div#users-contain table td, div#users-contain table th {
 			width : 350,
 			modal : true,
 			buttons : {
-				"Add Publisher" : addPublisher,
+				"Add Publisher" : addPublisher1,
 				Cancel : function() {
 					publisherDialog.dialog("close");
 				}
@@ -190,6 +192,7 @@ div#users-contain table td, div#users-contain table th {
 	<ol class="breadcrumb">
 		<li><a href="#">Add Book</a></li>
 	</ol>
+	
 	<div class="panel panel-default">
 		<div class="panel body">
 			<g:if test="${flash.message}">
